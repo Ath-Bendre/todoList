@@ -1,0 +1,16 @@
+<div class="todo-item" *ngFor = "let todo of todos">
+  <div class = "todo-item-left">
+    <input type="checkbox" [(ngModel)]="todo.completed">
+    <div class="todo-item-label" [ngClass]="{'completed': todo.completed}" ><strong>{{todo.title}}</strong></div>
+  </div>
+    <div class="remove-item"  (click)="deleteTodo(todo.id)" >
+      <strong>&times;</strong>
+    </div>
+</div>
+<div >
+  <div *ngIf="atLeastOne()">
+    <button class="btn" (click)="clearCompleted()">Clear Completed</button>
+  </div>
+</div>
+
+<app-todo-footer *ngIf="todos && todos.length > 0"[todos] = "todos"></app-todo-footer>
